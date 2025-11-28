@@ -34,6 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.text.isDigitsOnly
@@ -80,6 +81,7 @@ fun AllBookView(
         item {
             Column(modifier = Modifier.padding(16.dp)) {
                 OutlinedTextField(
+                    modifier = Modifier.testTag("tesTag_keyWord"),
                     value = text,
                     onValueChange = { newText ->
                         text = newText
@@ -89,6 +91,7 @@ fun AllBookView(
             }
             Row (modifier = Modifier.padding(16.dp)) {
                 OutlinedTextField(
+                    modifier = Modifier.testTag("tesTag_price"),
                     value = price,
                     onValueChange = { it ->
                         if (it.isDigitsOnly()) {
@@ -97,6 +100,7 @@ fun AllBookView(
                     }
                 )
                 Button(
+                    modifier = Modifier.testTag("tesTag_filter"),
                     onClick = {
                         if (price.isDigitsOnly() && price.isNotEmpty()) {
                             doFilterPrice(price.toInt())
